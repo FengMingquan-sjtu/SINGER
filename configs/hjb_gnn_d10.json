@@ -1,0 +1,22 @@
+{
+  "_comment": "HJB PDE",
+  "eqn_type": "hjb",
+  "v_type": "v",
+  "total_time": 1,
+  "eps": 1.0,
+  "dim": 10,
+  "u_width": 50,
+  "num_time_interval": 10,
+  "seed": 10,
+  "num_sample": 250,
+  "fit_n_iter": 2000,
+  "fit_bs": 64,
+  "fit_thereshold": 1e-3,
+  "train_dropout": 0.1,
+  "train_hiddens": 100,
+  "gnn_skip_connection": 0,
+  "train_bs": 64,
+  "train_epoch": 1,
+  "train_lr": 1e-4
+}
+  
