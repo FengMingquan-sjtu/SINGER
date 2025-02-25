@@ -14,10 +14,10 @@
   "fit_bs": 64,
   "fit_thereshold": 1e-3,
   "train_dropout": 0.1,
-  "train_hiddens": 100,
+  "train_hiddens": 512,
   "gnn_skip_connection": 1,
-  "train_bs": 64,
-  "train_epoch": 1,
+  "train_bs": 128,
+  "train_epoch": 10,
   "train_lr": 5e-4
 }
   
