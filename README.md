@@ -16,11 +16,11 @@ nvidia-ml-py3
 **Code**:
 `models.py` The implementation of the networks
 `loss_func.py` Implements the loss functions based on different equation types and network types.
-`singer.py` The core code of the project enables experiments with the Heat equation and Hamilton-Jacobi-Bellman (HJB) equations, with available network architectures including V (Node), NO3 (PINO), and GNN (SINGER). 
+`singer.py` The core code of the project enables experiments with the Heat equation and Hamilton-Jacobi-Bellman (HJB) equations, with available network architectures including node (Node), pino (PINO), and singer (SINGER). 
 The code supports data generation, training, and testing operations. The command-line parameters include:
 * `--eqn_type`: Equation type selection ('heat' or 'hjb');
 * `--cur_dim`: Dimensionality of the current equation (default: 10);
-* `--v_type`: Neural solver selection ('v' [Node], 'no' [PINO], or 'gnn' [SINGER]);
+* `--v_type`: Neural solver selection ('node', 'pino', or 'singer');
 * `--drop_out`: Dropout activation switch;
 * `--train_mode`: Operational mode ('0' for test dataset generation, '1' for network training and testing with existing dataset).
 
@@ -32,13 +32,13 @@ To run experimental tests for a 10-dimensional Heat equation, use the following 
 python singer.py --eqn_type heat --cur_dim 10 --train_mode 0
 
 # Phase 2: Train/test with Node solver (NO)
-python singer.py --eqn_type heat --cur_dim 10 --v_type v --drop_out 1 --train_mode 1
+python singer.py --eqn_type heat --cur_dim 10 --v_type node --drop_out 1 --train_mode 1
 
 # Phase 3: Train/test with PINO solver (PINO)
-python singer.py --eqn_type heat --cur_dim 10 --v_type no --train_mode 1
+python singer.py --eqn_type heat --cur_dim 10 --v_type pino --train_mode 1
 
 # Phase 4: Train/test with GNN solver (SINGER)
-python singer.py --eqn_type heat --cur_dim 10 --v_type gnn --drop_out 1 --train_mode 1
+python singer.py --eqn_type heat --cur_dim 10 --v_type singer --drop_out 1 --train_mode 1
 ```
 **Configs**:
 Specific parameters for experiments are defined in corresponding JSON files within the `configs/` directory, following the naming convention:
