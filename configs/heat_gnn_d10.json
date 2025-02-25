@@ -17,7 +17,6 @@
   "train_hiddens": 100,
   "gnn_skip_connection": 1,
   "train_bs": 64,
-  "train_epoch": 1,
+  "train_epoch": 10,
   "train_lr": 5e-4
 }
-  
