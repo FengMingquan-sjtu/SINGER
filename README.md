@@ -31,7 +31,7 @@ To run experimental tests for a 10-dimensional Heat equation, use the following 
 # Phase 1: Generate test data
 python singer.py --eqn_type heat --cur_dim 10 --train_mode 0
 
-# Phase 2: Train/test with Node solver (NO)
+# Phase 2: Train/test with Node solver (NODE)
 python singer.py --eqn_type heat --cur_dim 10 --v_type node --drop_out 1 --train_mode 1
 
 # Phase 3: Train/test with PINO solver (PINO)
@@ -43,7 +43,7 @@ python singer.py --eqn_type heat --cur_dim 10 --v_type singer --drop_out 1 --tra
 **Configs**:
 Specific parameters for experiments are defined in corresponding JSON files within the `configs/` directory, following the naming convention:
 `{eqn_type}_{v_type}_d{cur_dim}.json`
-(e.g., `heat_v_d10.json` for Node-based 10D Heat equation configurations)
+(e.g., `heat_node_d10.json` for Node-based 10D Heat equation configurations)
 
 **Checkpoints**:
 Experimentally generated test data and trained model parameters are stored in the `checkpoints/` directory.
