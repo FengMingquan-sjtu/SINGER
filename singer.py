@@ -48,15 +48,14 @@ class EqnConfig():
 
 class Heat():
     def __init__(self, eqn_config):
-        self.dim = eqn_config.dim  # PDE 的维度
+        self.dim = eqn_config.dim  # the dim of PDE
         self.total_time = eqn_config.total_time
         self.num_time_interval = eqn_config.num_time_interval
         self.delta_t = self.total_time / self.num_time_interval
-        self.a = eqn_config.a # 左边界
-        self.b = eqn_config.b  # 右边界
-
-        self.x_init = 0.0  # x 的初始条件
-        self.sigma = self.dim + 0.0  # 波动率项
+        self.a = eqn_config.a # left bound
+        self.b = eqn_config.b  # right bound
+        
+        self.x_init = 0.0
 
     def sample(self, num_sample, device, generator=None):
         x_sample = self.a + (self.b-self.a)*torch.rand((num_sample, self.dim), device=device)
@@ -83,7 +82,7 @@ class Heat():
 
 class HJB():
     def __init__(self, eqn_config):
-        self.dim = eqn_config.dim  # PDE 的维度
+        self.dim = eqn_config.dim
         self.width = eqn_config.u_width
         self.total_time = eqn_config.total_time
         self.eps = eqn_config.eps
@@ -91,7 +90,7 @@ class HJB():
         self.num_time_interval = eqn_config.num_time_interval
         self.delta_t = self.total_time / self.num_time_interval
 
-        self.x_init = 0.0  # x 的初始条件
+        self.x_init = 0.0
 
     def sample(self, theta_0, n_x):
         dim, width = self.dim, self.width
@@ -557,14 +556,14 @@ def test_train(eqn_config, v_type, drop_out):
         dropout_p = 0.0
     
     is_pino = False
-    if v_type == 'gnn':
+    if v_type == 'singer':
         n_hiddens = eqn_config.train_hiddens
         if eqn_config.gnn_skip_connection:
             skip_flag = True
         else:
             skip_flag = False
         v = GnnV5(u, dropout_p=dropout_p, n_hiddens=n_hiddens, skip_connection=skip_flag)
-    elif v_type == 'no':
+    elif v_type == 'pino':
         is_pino = True
         T = eqn_config.total_time
         n_hiddens = eqn_config.train_hiddens
@@ -589,12 +588,12 @@ def test_gen_dataset(eqn_config):
         eqn = None
 
 if __name__ == '__main__':
-    parser = argparse.ArgumentParser(description="方程类型，维度以及是否dropout")
-    parser.add_argument('--eqn_type', type=str, default='heat', help='方程类型')
-    parser.add_argument('--cur_dim', type=int, default=10, help='数据维度')
-    parser.add_argument('--v_type', type=str, default='v', help='模型类型')
-    parser.add_argument('--drop_out', type=int, default=1, help='是否dropout')
-    parser.add_argument('--train_mode', type=int, default=0, help='训练模式')
+    parser = argparse.ArgumentParser(description="SINGER PDE Solver")
+    parser.add_argument('--eqn_type', type=str, default='heat', help='Equation type')
+    parser.add_argument('--cur_dim', type=int, default=10, help='Data dimensions')
+    parser.add_argument('--v_type', type=str, default='node', help='Network type')
+    parser.add_argument('--drop_out', type=int, default=1, help='Dropout flag')
+    parser.add_argument('--train_mode', type=int, default=1, help='Generation data or Train mode')
 
     args = parser.parse_args()
     eqn_type = args.eqn_type
