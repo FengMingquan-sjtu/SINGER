@@ -431,7 +431,7 @@ def train(u, v, eqn_config, eqn, ckp_path=None, u_label=None, is_para=False, is_
                 continue
             
             
-            if j % 2 == 0:
+            if j % 5 == 0:
                 print(f"---- epoch {i}, batch {j} ({j/len(dataload_train):.4f}) ----")
                 print(f"r_T: {r_T.item()}")
                 T = eqn_config.total_time
@@ -590,11 +590,11 @@ def test_gen_dataset(eqn_config):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description="方程类型，维度以及是否dropout")
-    parser.add_argument('--eqn_type', type=str, default='hjb', help='方程类型')
+    parser.add_argument('--eqn_type', type=str, default='heat', help='方程类型')
     parser.add_argument('--cur_dim', type=int, default=10, help='数据维度')
-    parser.add_argument('--v_type', type=str, default='no', help='模型类型')
+    parser.add_argument('--v_type', type=str, default='v', help='模型类型')
     parser.add_argument('--drop_out', type=int, default=1, help='是否dropout')
-    parser.add_argument('--train_mode', type=int, default=1, help='训练模式')
+    parser.add_argument('--train_mode', type=int, default=0, help='训练模式')
 
     args = parser.parse_args()
     eqn_type = args.eqn_type
