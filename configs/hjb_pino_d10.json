@@ -1,7 +1,7 @@
 {
   "_comment": "HJB PDE",
   "eqn_type": "hjb",
-  "v_type": "v",
+  "v_type": "pino",
   "total_time": 1,
   "eps": 1.0,
   "dim": 10,
