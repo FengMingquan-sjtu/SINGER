@@ -8,7 +8,6 @@ torch
 torchdiffeq
 torch_geometric
 matplotlib
-pickle
 nvidia-ml-py3
 ```
 
@@ -31,14 +30,19 @@ To run experimental tests for a 10-dimensional Heat equation, use the following 
 # Phase 1: Generate test data
 python singer.py --eqn_type heat --cur_dim 10 --train_mode 0
 
-# Phase 2: Train/test with Node solver (NODE)
+# Phase 2: Train/test with Our solver (SINGER)
+python singer.py --eqn_type heat --cur_dim 10 --v_type singer --drop_out 1 --train_mode 1
+
+```
+
+and run two baselines by:
+```cmd
+# Baseline 1: Train/test with Node solver (NODE)
 python singer.py --eqn_type heat --cur_dim 10 --v_type node --drop_out 1 --train_mode 1
 
-# Phase 3: Train/test with PINO solver (PINO)
+# Baseline 2: Train/test with PINO solver (PINO)
 python singer.py --eqn_type heat --cur_dim 10 --v_type pino --train_mode 1
 
-# Phase 4: Train/test with GNN solver (SINGER)
-python singer.py --eqn_type heat --cur_dim 10 --v_type singer --drop_out 1 --train_mode 1
 ```
 **Configs**:
 Specific parameters for experiments are defined in corresponding JSON files within the `configs/` directory, following the naming convention:
