@@ -1,5 +1,5 @@
 ## SINGER: Stochastic Network Graph Evolving Operator for High Dimensional PDEs
-An implementation of paper "SINGER: Stochastic Network Graph Evolving Operator for High Dimensional PDEs". [Online]. Available: https://openreview.net/forum?id=wVADj7yKee
+Official implementation of ICLR 2025 paper "SINGER: Stochastic Network Graph Evolving Operator for High Dimensional PDEs". Available: https://openreview.net/forum?id=wVADj7yKee
 
 
 ### Requirements:
